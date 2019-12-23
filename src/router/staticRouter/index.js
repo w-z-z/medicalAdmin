@@ -4,56 +4,29 @@
  * @Autor: ranli
  * @Date: 2019-12-22 17:19:55
  * @LastEditors  : ranli
- * @LastEditTime : 2019-12-23 11:20:10
+ * @LastEditTime : 2019-12-23 13:14:37
  */
-import layout from '@/layout/index.vue'
 export default [{
     id: 123456,
-    title: "布局",
-    name: "layoutStatic",
+    title: "忘记密码",
+    name: "forgetPsd",
     meta: {
-      title: "",
-      requireAuth: true
+      title: "忘记密码",
+      isStatic: true
     },
-    path: '/layoutStatic',
-    component: layout,
-    redirect: '/register',
-    children: [{
-        id: 123456,
-        title: "注册",
-        meta: {
-          title: "注册",
-          isStatic: true //是否是静态路由的标识
-        },
-        name: "register",
-        path: '/register',
-        component: () => import('@/views/register/index.vue'),
-        children: []
-      },
-      {
-        id: 123456,
-        title: "忘记密码",
-        name: "forgetPsd",
-        meta: {
-          title: "忘记密码",
-          isStatic: true
-        },
-        path: '/forgetPsd',
-        component: () => import('@/views/forgetPsd/index.vue'),
-      },
-      {
-        id: 123456,
-        title: "404",
-        name: "NotFound",
-        meta: {
-          title: "404",
-        },
-        path: '/NotFound',
-        component: () => import('@/views/errorPage/NotFound.vue'),
-      }
-    ]
+    path: '/forgetPsd',
+    component: () => import('@/views/forgetPsd/index.vue'),
   },
   {
+    id: 123456,
+    title: "404",
+    name: "NotFound",
+    meta: {
+      title: "404",
+    },
+    path: '/NotFound',
+    component: () => import('@/views/errorPage/NotFound.vue'),
+  }, {
     id: 123456,
     title: "登录",
     name: "login",
