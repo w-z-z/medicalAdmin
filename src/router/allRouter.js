@@ -4,11 +4,10 @@
  * @Autor: ranli
  * @Date: 2019-12-20 21:25:48
  * @LastEditors  : ranli
- * @LastEditTime : 2019-12-23 15:43:47
+ * @LastEditTime : 2019-12-24 09:29:06
  */
 
 //  路由模板
-import template from '@/views/template/index.vue'
 import layout from '@/layout/index.vue'
 //未登录路由
 import staticRouter from './staticRouter'
@@ -28,28 +27,11 @@ let all = [{
   },
   path: '/layout',
   component: layout,
-  redirect: '/userCener',
+  redirect: '/product',
   children: [...all_router_model]
 }, ...staticRouter]
-// 路由拼接获取菜单
-// let ALLRouteMenu = []
-// const initRouter = function (routerobj) {
-//   all_router_model.forEach(element => {
-//     //是否是菜单路由
-//     if (element.isMenu) {
-//       let obj = {
-//         name: element.name,
-//         path: element.path,
-//         Mid: element.Mid,
-//         children: []
-//       }
-//       if (element.children && element.children.length >= 1) {
-//         initRouter(element.children)
-//       }
-//       ALLRouteMenu.push(obj)
-//     }
-//   });
-// }
-// initRouter(all)
-// console.log(ALLRouteMenu);
+
+
+
+
 export default all

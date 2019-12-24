@@ -4,13 +4,13 @@
  * @Autor: ranli
  * @Date: 2019-12-23 12:29:42
  * @LastEditors  : ranli
- * @LastEditTime : 2019-12-23 14:27:43
+ * @LastEditTime : 2019-12-24 09:30:53
  -->
 <template>
   <div>
     <Mheader></Mheader>
     <!-- 内容 -->
-    <aside></aside>
+    <Maside></Maside>
     <section id="content">
       <router-view></router-view>
     </section>
@@ -20,13 +20,13 @@
 
 <script>
 import Mheader from "./model/Mheader";
-import aside from "./model/aside/index.vue";
+import Maside from "./model/aside/index.vue";
 import Mfooter from "./model/Mfooter";
 export default {
   name: "",
   components: {
     Mfooter,
-    aside,
+    Maside,
     Mheader
   },
   data() {

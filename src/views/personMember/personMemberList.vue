@@ -2,24 +2,22 @@
  * @Description: 文件描述
  * @Version: 1.1.0
  * @Autor: ranli
- * @Date: 2019-12-23 12:29:42
+ * @Date: 2019-12-24 09:05:51
  * @LastEditors: ranli
- * @LastEditTime: 2019-12-24 09:04:41
+ * @LastEditTime: 2019-12-24 09:06:08
  -->
 <template>
-  <div>
+  <div class="layout">
   </div>
 </template>
 
 <script>
 export default {
-  name: "prodectDetail",
-
-  data() {
-    return {};
-  }
+  name: "home",
+  components: {
+    layout
+  },
+  methods: {},
+  created() {}
 };
 </script>
-
-<style  scoped>
-</style>

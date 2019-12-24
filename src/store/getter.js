@@ -4,13 +4,13 @@
  * @Autor: ranli
  * @Date: 2019-12-20 23:56:20
  * @LastEditors  : ranli
- * @LastEditTime : 2019-12-23 11:25:45
+ * @LastEditTime : 2019-12-24 09:19:33
  */
 export default {
    userInfo: (state) => {
       return state.user.userInfo
    },
-   getToken: (state) => {
-      return state.user.token
+   getRouters: (state) => {
+      return state.user.routers
    },
 }

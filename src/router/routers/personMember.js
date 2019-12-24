@@ -4,7 +4,7 @@
  * @Autor: ranli
  * @Date: 2019-12-23 12:40:08
  * @LastEditors  : ranli
- * @LastEditTime : 2019-12-23 14:08:48
+ * @LastEditTime : 2019-12-24 09:08:06
  */
 import template from '@/views/template/index.vue'
 export default [{
@@ -30,6 +30,6 @@ export default [{
     isMenu: true,
     name: "personMemberList",
     path: '/personMember/personMemberList',
-    component: () => import('@/views/person/setUserInfo/index.vue'),
+    component: () => import('@/views/personMember/personMemberList.vue'),
   }, ]
 }, ]

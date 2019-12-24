@@ -4,14 +4,13 @@
  * @Autor: ranli
  * @Date: 2019-12-22 17:19:55
  * @LastEditors  : ranli
- * @LastEditTime : 2019-12-23 14:09:06
+ * @LastEditTime : 2019-12-24 09:05:08
  */
 import template from '@/views/template/index.vue'
 export default [{
   name: "product",
   meta: {
     title: "产品库",
-
   },
   Mid: 'M10',
   icon: "",
@@ -28,6 +27,6 @@ export default [{
     isMenu: true,
     name: "productList",
     path: '/product/productList',
-    component: () => import('@/views/person/setUserInfo/index.vue'),
+    component: () => import('@/views/product/productList.vue'),
   }, ]
 }, ]

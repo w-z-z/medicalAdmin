@@ -4,7 +4,7 @@
  * @Autor: ranli
  * @Date: 2019-12-23 12:29:42
  * @LastEditors  : ranli
- * @LastEditTime : 2019-12-23 15:44:29
+ * @LastEditTime : 2019-12-24 09:29:29
  -->
 <template>
   <div class="home">
@@ -65,14 +65,13 @@ export default {
         type: this.formInline.region
         // routers: personRouter
       };
-
       // let addRouters =
       //   this.formInline.region == 1 ? personRouter : enterpriseRouter;
       // userInfo["routers"] = addRouters;
       //存储store
       this.$store.dispatch("changeUserInfo", userInfo);
       // this.$store.dispatch("addRouters",addRouters)
-      this.$router.push({ name: "userCener" });
+      this.$router.push({ name: "product" });
     }
   }
 };
