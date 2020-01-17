@@ -3,8 +3,8 @@
  * @Version: 1.1.0
  * @Autor: ranli
  * @Date: 2019-12-22 14:22:15
- * @LastEditors  : ranli
- * @LastEditTime : 2019-12-23 11:24:14
+ * @LastEditors  : Seven
+ * @LastEditTime : 2020-01-09 09:24:34
  */
 //引入reset文件
 @import './reset.scss';
@@ -13,4 +13,27 @@
 //引入修改element全局修改的样式文件 推荐配置customClass
 
 
-@import './element.scss'
+@import './element.scss';
+
+
+.closeStatus {
+  display: inline-block;
+  width: 42px;
+  height: 23px;
+  text-align: center;
+  border: 1px solid rgba(255, 116, 101, 1);
+  font-size: 14px;
+  font-family: Microsoft YaHei;
+  color: rgba(255, 116, 101, 1);
+}
+
+.openStatus {
+  display: inline-block;
+  width: 42px;
+  height: 23px;
+  text-align: center;
+  border: 1px solid #8A97AD;
+  font-size: 14px;
+  font-family: Microsoft YaHei;
+  color: #8A97AD;
+}

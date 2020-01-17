@@ -3,37 +3,38 @@
  * @Version: 1.1.0
  * @Autor: ranli
  * @Date: 2019-12-20 21:25:47
- * @LastEditors  : ranli
- * @LastEditTime : 2019-12-23 11:41:48
+ * @LastEditors  : Seven
+ * @LastEditTime : 2020-01-15 11:51:49
  */
 
 
 import axios from 'axios'
 import apiError from './apiError'
+import store from '@/store'
+import router from '@/router'
 import {
   appConfig
 } from '@/config'
 const md5 = require('js-md5')
+// console.log(process.env)
 
 // 创建实例时设置配置的默认值
 const Service = axios.create({
   timeout: appConfig.TIMEOUT, // 超时
-  baseURL: appConfig.requesUrl, // 路径
+  baseURL: process.env.VUE_APP_API_URL, // 路径
   headers: {
-    'Content-Type': 'application/json; charset=UTF-8'
+    'Content-Type': 'application/json; charset=UTF-8',
   }
 })
 // 添加请求拦截器
 Service.interceptors.request.use(
   config => {
-    // 在发送请求之前做些什么
+    let _token = store.state.user.userInfo && store.state.user.userInfo.token
+    if (_token) {
+      config.headers.Authorization = _token
+    }
     if (config.method === 'post') {
       config.data = signature(config.data)
-    }
-    if (config.method === 'get') {
-      config.params = {
-        ...config.data
-      }
     }
     return config
   },
@@ -42,17 +43,28 @@ Service.interceptors.request.use(
     return Promise.reject(error)
   }
 )
-
 // 添加响应拦截器
 Service.interceptors.response.use(
   response => {
     // 对响应数据做点什么
-
-    return response.data;
+    if (response.data) {
+      return response.data;
+    } else {
+      return "";
+    }
   },
   error => {
-    // 对响应错误做点什么
-    return apiError(error)
+    console.log('error')
+    console.log(error)
+    let {
+      Key, //key
+      Msg, //文本信息
+    } = error.response.data
+    // 未登录key
+    if (Key == appConfig.UnLoginCode) {
+      store.dispatch("clearAllUserData")
+    }
+    return apiError(Msg)
   }
 )
 
@@ -62,18 +74,21 @@ Service.interceptors.response.use(
  */
 function signature(data = {}) {
   let signData = {}
-  let _auth_key = ''
+  // let _auth_key = ''
+
+  // signData['token'] = token
   // let _userInfo = store.getters.userInfo;
   // if (_userInfo) {
   //   _auth_key = _userInfo.auth_key
   // }
-  const _key = 'C#uUcw5gIcI8PZqrVCt$$Qwx1qHNJJ'
-  const nowDate = Date.parse(new Date()) / 1000
-  const hash = md5(_auth_key + '' + nowDate + '' + _key)
-  signData['access_time'] = nowDate
-  signData['access_key'] = hash
-  signData['auth_key'] = _auth_key
-  signData['version'] = '1.0.0'
+  // const _key = 'C#uUcw5gIcI8PZqrVCt$$Qwx1qHNJJ'
+  // const nowDate = Date.parse(new Date()) / 1000
+  // const hash = md5(_auth_key + '' + nowDate + '' + _key)
+  // signData['access_time'] = nowDate
+  // signData['access_key'] = hash
+  // signData['auth_key'] = _auth_key
+  // signData['version'] = '1.0.0'
+
   return Object.assign(data, signData)
 }
 /**

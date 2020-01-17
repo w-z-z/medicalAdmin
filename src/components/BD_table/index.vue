@@ -1,14 +1,13 @@
 <!--
  * @Author: lc
  * @Date: 2019-09-24 14:25:18
- * @LastEditors: SPM
- * @LastEditTime: 2019-10-25 09:47:18
+ * @LastEditors  : ranli
+ * @LastEditTime : 2020-01-02 14:51:54
  * @Description: 组件
  -->
 
 <template>
   <div>
-    
     <el-table v-bind="{...resetTableConfig}"
       style="width: 100%"
       @select="select"
@@ -22,7 +21,7 @@
               :key="btnIndex"
               @btnClick="item.btnClick ? item.btnClick(btnItem, scope.row, scope.$index) : null"
               v-bind="btnItem"></CustomBtn> -->
-            <el-button size="mini"
+            <el-button size="text"
               v-for="(btnItem, btnIndex) in item.btns"
               :key="btnIndex"
               @click="item.btnClick ? item.btnClick(btnItem, scope.row, scope.$index) : null">{{ typeof btnItem == 'object' ? btnItem.label : btnItem}}</el-button>
@@ -34,6 +33,14 @@
         </el-table-column>
       </template>
     </el-table>
+    <br />
+    <div class="batchHandel">
+      <el-button @click="item.onClick ?item.onClick(item, selectData):null"
+        :type='item.type'
+        v-for="(item,index) in NewbatchHandel "
+        :key="index"
+        :size='item.size'>{{item.label}}</el-button>
+    </div>
     <div class="paging-panel"
       v-if="resetTableConfig.pagingPar.isShow">
       <el-pagination v-bind="{...resetTableConfig.pagingPar}"
@@ -42,11 +49,16 @@
         @current-change="handleCurrentChange">
       </el-pagination>
     </div>
+
   </div>
 </template>
-
 <script>
-import { TableHeadClass, PagingClass, TableConfigClass } from "./class";
+import {
+  TableHeadClass,
+  PagingClass,
+  TableConfigClass,
+  batchHandelClass
+} from "./class";
 export default {
   name: "BD-table",
   components: {},
@@ -65,14 +77,25 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+      selectData: []
+    };
   },
   computed: {
     // table参数重组
     resetTableHead() {
       if (this.tableHead) {
-        console.log(this.tableHead.map(item => new TableHeadClass(item)))
         return this.tableHead.map(item => new TableHeadClass(item));
+      } else {
+        return [];
+      }
+    },
+    // table参数重组
+    NewbatchHandel() {
+      if (this.tableConfig.batchHandel) {
+        return this.tableConfig.batchHandel.map(
+          item => new batchHandelClass(item)
+        );
       } else {
         return [];
       }
@@ -94,6 +117,7 @@ export default {
   methods: {
     // 当用户手动勾选【数据行和全选】的 Checkbox 时触发的事件
     select(selection, row) {
+      this.selectData = selection;
       this.$emit("select", selection);
     },
     // 分页组件下拉事件

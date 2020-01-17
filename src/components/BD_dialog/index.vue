@@ -1,3 +1,11 @@
+<!--
+ * @Description: 文件描述
+ * @Version: 1.1.0
+ * @Autor: ranli
+ * @Date: 2019-12-23 12:29:42
+ * @LastEditors  : ranli
+ * @LastEditTime : 2020-01-06 14:57:41
+ -->
 <template>
   <el-dialog v-bind="{...renderDialogParam}"
     :visible.sync="dialogParam.visible">
@@ -36,7 +44,7 @@ export default {
   computed: {
     renderDialogParam() {
       if (this.dialogParam) {
-        let par = JSON.parse(JSON.stringify(this.dialogParam));
+        let par = this._.cloneDeep(this.dialogParam);
         if (par.okBtn) {
           par.okBtn = new BtnConfigClass(par.okBtn);
         }

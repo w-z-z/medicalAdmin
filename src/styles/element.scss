@@ -3,15 +3,171 @@
  * @Version: 1.1.0
  * @Autor: ranli
  * @Date: 2019-12-22 14:24:56
- * @LastEditors  : ranli
- * @LastEditTime : 2019-12-23 11:24:56
+ * @LastEditors  : Seven
+ * @LastEditTime : 2020-01-10 14:35:38
  */
 // eg
-.el-input__inner {
-  height: 50px;
-  line-height: 50px;
+// .el-input__inner {
+//   height: 50px;
+//   line-height: 50px;
+// }
+
+// .el-button.el-button--primary {
+//   background-color: darkblue;
+// }
+
+.btnStyle {
+    width: 168px;
+    border-radius: 20px;
+    font-size: 16px;
+    color: #fff;
+    border: 0;
+
+    &.el-button--danger {
+        background: linear-gradient(0deg, rgba(255, 101, 128, 1) 0%, rgba(255, 150, 160, 1) 100%);
+
+        &:hover {
+            background: linear-gradient(0deg, rgba(255, 101, 128, 1) 0%, rgba(255, 150, 160, 1) 100%);
+        }
+
+    }
+
+    &.el-button--primary {
+        background: linear-gradient(0deg, rgba(111, 168, 233, 1) 0%, rgba(147, 205, 255, 1) 100%);
+    }
+
 }
 
-.el-button.el-button--primary {
-  background-color: darkblue;
+.addOreditRecord {
+    .fromTab {
+        .el-tabs__active-bar {
+            height: 5px;
+        }
+    }
+
+    .el-date-editor,
+    .el-select {
+        width: 100%;
+    }
+
+    //增加健康档案的多选框的类
+    .coustomCheckbox {}
+
+    .Other {
+        .OtherChecked {}
+
+        .OtherInput {
+            width: 100%;
+
+            .el-input__inner {
+                border-top: none;
+                width: 100%;
+                border-left: none;
+                border-radius: 0;
+                border-right: none;
+            }
+        }
+    }
+}
+
+//表格表单搜索样式
+.serchFrom {
+    background-color: white;
+    margin-top: 28px;
+    margin-bottom: 28px;
+    border-radius: 3px;
+    padding-top: 18px;
+    padding-left: 30px;
+
+    .BtnBox {
+        padding-left: 30px;
+    }
+}
+
+//提交信息表单样式
+.submitInfoFrom {
+    .el-form-item {
+        .el-form-item__label {
+            padding: 0;
+        }
+
+        .el-input {
+            .el-input__inner {
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                border-radius: 20px;
+            }
+        }
+
+        .el-textarea__inner {
+            border-radius: 20px;
+
+        }
+    }
+
+    .BtnBox {
+        text-align: center;
+    }
+}
+
+.sampleFrom {
+    .BtnBox {
+        width: 100%;
+
+        text-align: center;
+    }
+}
+
+//自定义弹窗样式
+.medicalDialog {
+    border-radius: 20px;
+    // max-height: 80vh;
+
+    .el-dialog__header {
+        font-size: 20px;
+        font-family: Microsoft YaHei;
+        font-weight: bold;
+        color: rgba(51, 51, 51, 1);
+        padding: 40px 20px 10px;
+    }
+
+    .el-dialog__body {
+        padding: 20px;
+        padding-bottom: 0;
+        // height: calc(80vh - 65px);
+        // overflow-y: auto;
+    }
+
+    .el-icon-close:before {
+        content: "\e78d";
+    }
+
+}
+
+//自定义表格样式
+.mediclTabelClass {
+    .el-table {
+        .cell {
+            text-align: center;
+        }
+
+        thead {
+
+            .cell {
+                font-size: 16px;
+                font-family: Microsoft YaHei;
+                font-weight: 400;
+                color: rgba(51, 51, 51, 1);
+            }
+        }
+
+        tbody {
+            .cell {
+                font-size: 14px;
+                font-family: Microsoft YaHei;
+                font-weight: 400;
+                color: #666666;
+            }
+        }
+
+    }
 }

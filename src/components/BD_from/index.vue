@@ -1,12 +1,22 @@
+<!--
+ * @Description: 文件描述
+ * @Version: 1.1.0
+ * @Autor: ranli
+ * @Date: 2019-12-23 12:29:42
+ * @LastEditors  : ranli
+ * @LastEditTime : 2020-01-08 16:20:41
+ -->
 <template>
   <el-form :model="formData"
+    :class="renderFromConfig.coustomClass"
     v-bind="{...renderFromConfig}">
     <slot></slot>
     <slot name="slot-btn">
-      <el-form-item>
+      <el-form-item class="BtnBox">
         <el-button @click="submitForm()"
           v-bind="renderFromConfig.okBtn">{{renderFromConfig.okBtn.label}}</el-button>
-        <el-button @click="resetForm()"
+        <el-button v-if="renderFromConfig.noBtn.show"
+          @click="resetForm()"
           v-bind="renderFromConfig.noBtn">{{renderFromConfig.noBtn.label}}</el-button>
       </el-form-item>
     </slot>

@@ -1,4 +1,3 @@
-
 /**
  * table 头部
  */
@@ -19,7 +18,8 @@ class TableHeadClass {
     selectable = null, //（类型：Function） 仅对 type=selection 的列有效,类型为 Function，Function 的返回值用来决定这一行的 CheckBox 是否可以勾选 【Function(row, index)】
     btns = null, //（类型：Array） 仅对 type=btn 的列有效
     btnClick = null, //（类型：Function）按钮点击事件回调  仅对 type=btn 的列有效
-    sortable = false // 排序
+    sortable = false ,// 排序
+    sortBy = '' // 排序属性
   } = {}) {
     this.label = label
     this.prop = prop
@@ -37,6 +37,7 @@ class TableHeadClass {
     this.btns = btns
     this.btnClick = btnClick
     this.sortable = sortable
+    this.sortBy = sortBy
   }
 }
 
@@ -120,6 +121,33 @@ class TableConfigClass {
     this.pagingPar = pagingPar
   }
 }
+/**
+ * 批量操作的按钮
+ */
+class batchHandelClass {
+  constructor({
+    label = '操作',
+    type = 'danger',
+    size = 'mini',
+    customClass = 'info',
+    onClick = null,
+  } = {}) {
+    // 按钮文本
+    this.label = label
+    //按钮主题类型
+    this.type = type
+    //按钮尺寸
+    this.size = size
+    //自定义class
+    this.customClass = customClass
+    //触发的父组件的方法
+    this.onClick = onClick
+  }
+}
 
-
-export { TableHeadClass, PagingClass, TableConfigClass }
+export {
+  TableHeadClass,
+  PagingClass,
+  TableConfigClass,
+  batchHandelClass
+}

@@ -4,7 +4,7 @@
  * @Autor: ranli
  * @Date: 2019-12-20 21:25:48
  * @LastEditors  : ranli
- * @LastEditTime : 2019-12-24 09:29:06
+ * @LastEditTime : 2020-01-02 16:14:22
  */
 
 //  路由模板
@@ -12,18 +12,22 @@ import layout from '@/layout/index.vue'
 //未登录路由
 import staticRouter from './staticRouter'
 
-
+import store from "@/store"
 //登录路由
-import product from './routers/product'
 import personMember from './routers/personMember'
+import product from './routers/product'
+import home from './routers/home'
+import webset from './routers/webset'
+import message from './routers/message'
 
-let all_router_model = [...product, ...personMember] //配置的路由
+let all_router_model = [...home, ...personMember, ...product, ...webset, ...message] //配置的路由
+store.dispatch("changeRouters", all_router_model)
 let all = [{
   id: 123456,
   title: "登录路由",
   name: "layout",
   meta: {
-    title: "首页",
+    title: "",
   },
   path: '/layout',
   component: layout,

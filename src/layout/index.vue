@@ -4,17 +4,35 @@
  * @Autor: ranli
  * @Date: 2019-12-23 12:29:42
  * @LastEditors  : ranli
- * @LastEditTime : 2019-12-24 09:30:53
+ * @LastEditTime : 2020-01-10 15:40:21
  -->
 <template>
   <div>
-    <Mheader></Mheader>
-    <!-- 内容 -->
-    <Maside></Maside>
-    <section id="content">
-      <router-view></router-view>
-    </section>
-    <Mfooter></Mfooter>
+    <el-container>
+      <el-header height="68px">
+        <Mheader></Mheader>
+      </el-header>
+      <el-container>
+        <el-aside width="96px">
+          <Maside></Maside>
+        </el-aside>
+        <el-container>
+          <el-main>
+            <section id="content">
+              <!-- <div class="BreadcrumbBox">
+                <breadcrumb></breadcrumb>
+              </div> -->
+              <div class="mainBox">
+                <router-view></router-view>
+              </div>
+              <el-footer>
+                <Mfooter></Mfooter>
+              </el-footer>
+            </section>
+          </el-main>
+        </el-container>
+      </el-container>
+    </el-container>
   </div>
 </template>
 
@@ -42,8 +60,28 @@ export default {
 
 <style lang="less">
 #content {
-  background-color: rgb(233, 233, 233);
-  min-height: calc(100vh - 200px);
-  padding-top: 100px;
+  height: calc(100vh - 109px);
+  display: flex;
+  flex-direction: column;
+}
+.el-header,
+.el-footer {
+  padding: 0;
+}
+.el-aside {
+  background-color: #6fa8e9;
+  min-height: 100%;
+  overflow: visible;
+}
+.el-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.el-main {
+  background-color: #f9f9f9;
+  // color: #333;
+  padding: 20px 50px;
+}
+.mainBox {
+  flex: 1;
 }
 </style> 
